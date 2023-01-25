@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;800&display=swap");
+
+body {
+  background-color: $backgroundColor;
+  font-family: "Lato", sans-serif !important;
+  margin: 0 4rem !important;
+}
+
+*:focus {
+  outline: none;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+#logo {
+  width: 268px;
+  height: 93px;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  &__bar {
+    @include form();
+    &__input {
+      @include input(searchBar);
+    }
+    &__submit {
+      @include button(search);
+    }
+  }
+
+  &__fields {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  &__fields__form {
+    @include form();
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.ingredient {
+  &__button {
+    @include button(ingredient);
+  }
+  &__input {
+    @include input(ingredient);
+  }
+  &__results__hide {
+    display: none;
+  }
+  &__results__show {
+    background-color: $blue;
+    color: white;
+    padding: 1rem;
+    border-radius: 0 5px 5px 5px;
+    margin: 0;
+  }
+  &__item {
+    cursor: pointer;
+  }
+}
+
+.device {
+  &__button {
+    @include button(device);
+  }
+  &__input {
+    @include input(device);
+  }
+  &__results__hide {
+    display: none;
+  }
+  &__results__show {
+    background-color: $green;
+    color: white;
+    padding: 1rem;
+    border-radius: 0 5px 5px 5px;
+    margin: 0;
+  }
+  &__item {
+    cursor: pointer;
+  }
+}
+
+.ustensils {
+  &__button {
+    @include button(ustensils);
+  }
+  &__input {
+    @include input(ustensils);
+  }
+  &__results__hide {
+    display: none;
+  }
+  &__results__show {
+    background-color: $red;
+    color: white;
+    padding: 1rem;
+    border-radius: 0 5px 5px 5px;
+    margin: 0;
+  }
+}
+
+.ustensil__item {
+  cursor: pointer;
+}
+
+.results {
+  margin-bottom: 1rem;
+}
+
+.no__results {
+  background-color: $primaryGrey;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  grid-column: span 3;
+  padding: 3rem 0rem;
+  text-align: center;
+}
+
+.search {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.search__fields {
+  .ingredient {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .device {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .ustensils {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  &__form__results {
+    &__ingredient {
+      grid-column: 1 / span 6;
+      grid-row: 2;
+    }
+    &__device {
+      grid-column: 2 / span 6;
+      grid-row: 2;
+    }
+    &__ustensils {
+      grid-column: 3 / span 6;
+      grid-row: 2;
+    }
+  }
+}
+
+.ingredients__item {
+  padding: 0rem 0rem 0rem 1rem;
+  text-align: left;
+}
+
+.ingredient,
+.device,
+.ustensils {
+  &__results__hide {
+    display: none;
+  }
+  &__results__show {
+    position: absolute;
+    transform: translate3d(0, -10px, 0px) !important;
+    z-index: 100;
+    @include makeAGrid(repeat(3, 2fr), 1fr, 0.5rem 5rem);
+  }
+}
